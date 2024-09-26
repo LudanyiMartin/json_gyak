@@ -64,6 +64,20 @@ export class AppController {
     }
   }
 
+  #jegkremek = [
+    {nev: 'Vanília', ar: 200},
+    {nev: 'Csoki', ar: 250},
+    {nev: 'Eper', ar: 300},
+  ]
+
+  @Get('jegkrem')
+  @Render('jegkremLista')
+  jegkremLista(){
+    return {
+      jegkremek: this.#jegkremek
+    }
+  }
+
   @Get('jegkrem/:id')
   @Render('jegkrem')
   jegkrem(@Param('id') id: string){
