@@ -1,6 +1,7 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Param, Query, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 import { quotes } from './quotes';
+import { query } from 'express';
 
 @Controller()
 export class AppController {
@@ -20,6 +21,7 @@ export class AppController {
       quotes: quotes.quotes
     }
   }
+
 
   randomIntFromInterval(min, max) { 
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -53,4 +55,22 @@ export class AppController {
       dict
     }
   }
+
+  @Get('hatterszin')
+  @Render('hatter')
+  hatterszin(@Query('bgColor') bgColor:string = '#0000ff'){
+    return {
+      bgColor
+    }
+  }
+
+  @Get('jegkrem/:id')
+  @Render('jegkrem')
+  jegkrem(@Param('id') id: string){
+    return {
+      id,
+      nev: 'CitromosCsoda',
+      ar: 1000
+  }
+}
 }
