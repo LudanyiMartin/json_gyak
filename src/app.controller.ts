@@ -75,7 +75,7 @@ export class AppController {
   deleteQuote(@Param('id') id: number) {
     for (let index = 0; index < quotes.quotes.length; index++) {
       if (quotes.quotes[index].id == id) {
-        quotes.quotes.splice(index, 1);
+        quotes.quotes.splice(index, 1);  
         return {
           message: 'Sikeres törlés'
         }
@@ -101,7 +101,11 @@ export class AppController {
     }
   }
 
-
+  @Get('authorRadnomForm')
+  @Render('authorRandomForm')
+  authorRandomForm() {
+    
+  }
 
   /*
   @Get('hatterszin')
@@ -134,5 +138,4 @@ export class AppController {
       nev: 'CitromosCsoda',
       ar: 1000
    }*/
-
 }
