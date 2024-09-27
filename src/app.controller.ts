@@ -56,6 +56,21 @@ export class AppController {
     }
   }
 
+
+  @Get('quote/:id')
+  @Render('quote')
+  oneQuote(@Param('id') id: number) {
+  for (let index = 0; index < quotes.quotes.length; index++) {
+    if(quotes.quotes[index].id == id){
+      return {
+        quote: quotes.quotes[index].quote,
+    
+    }
+  }
+}
+
+
+  /*
   @Get('hatterszin')
   @Render('hatter')
   hatterszin(@Query('bgColor') bgColor:string = '#0000ff'){
@@ -85,6 +100,6 @@ export class AppController {
       id,
       nev: 'CitromosCsoda',
       ar: 1000
+   }*/
   }
-}
 }
