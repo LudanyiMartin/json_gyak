@@ -65,9 +65,25 @@ export class AppController {
       return {
         quote: quotes.quotes[index].quote,
     
+      }
     }
   }
 }
+
+  @Get('deleteQuote/:id')
+  @Render('delete')
+  deleteQuote(@Param('id') id: number) {
+    for (let index = 0; index < quotes.quotes.length; index++) {
+      if(quotes.quotes[index].id == id){
+        quotes.quotes.splice(index, 1);
+        return {
+          message: 'Sikeres törlés'
+      }
+    }
+    return{
+      message: 'Ismeretlen idézet'
+    }
+  }
 
 
   /*
